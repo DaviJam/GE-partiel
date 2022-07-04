@@ -11,12 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,17 +31,7 @@ public class DirecteurServiceTests {
     @BeforeEach
     void setUp() {
 
-        List<Directeur> arrayListDirecteur = new ArrayList<>();
-
-        arrayListDirecteur.add( new Directeur(null, "directeur1@gmail.com", "password1"));
-        arrayListDirecteur.add( new Directeur(null, "directeur2@gmail.com", "password2"));
-        arrayListDirecteur.add( new Directeur(null, "directeur3@gmail.com", "password3"));
-
-        when(directeurDao.findAll()).thenReturn(arrayListDirecteur);
-
-        when(directeurDao.findByEmail("directeur1@gmail.com")).thenReturn(arrayListDirecteur.get(0));
     }
-
 
     @Test
     public void createDirecteurTest() {
@@ -60,6 +45,14 @@ public class DirecteurServiceTests {
 
     @Test
     void getAllDirecteurTest() {
+
+        List<Directeur> arrayListDirecteur = new ArrayList<>();
+
+        arrayListDirecteur.add( new Directeur(null, "directeur1@gmail.com", "password1"));
+        arrayListDirecteur.add( new Directeur(null, "directeur2@gmail.com", "password2"));
+        arrayListDirecteur.add( new Directeur(null, "directeur3@gmail.com", "password3"));
+
+        when(directeurDao.findAll()).thenReturn(arrayListDirecteur);
 
         List<Directeur> directeurArrayList = directeurService.getAllDirecteur();
         assertEquals(3, directeurArrayList.size() );

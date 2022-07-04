@@ -1,7 +1,6 @@
 package eu.ensup.gestionEcole.services;
 
 import eu.ensup.gestionEcole.dao.CourseLinkDao;
-import eu.ensup.gestionEcole.dao.EtudiantDao;
 import eu.ensup.gestionEcole.domain.Cours;
 import eu.ensup.gestionEcole.domain.CourseLink;
 import eu.ensup.gestionEcole.domain.Etudiant;
