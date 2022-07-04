@@ -12,7 +12,7 @@ import java.util.List;
 public class EtudiantAPI {
 
     @Autowired
-    EtudiantService etudiantService;
+    private EtudiantService etudiantService;
 
     @GetMapping("/getall")
     public List<Etudiant> getallStudents() {
