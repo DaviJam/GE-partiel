@@ -43,6 +43,7 @@ public class EtudiantAPI {
         }
     }
 
+
     @PostMapping("/update")
     public Etudiant updateStudent(@RequestBody Etudiant etudiant) {
         return etudiantService.updateStudent(etudiant);
