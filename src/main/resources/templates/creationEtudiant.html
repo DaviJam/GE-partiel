@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Création d'un étudiant</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Création d'un étudiant</h1>
+    <form action="#" th:action="@{/perfom_creationEtudiant}" th:object="${etudiant}" method="post">
+    	<label for="nom" >Nom : </label>
+        <input id="nom" type="text" th:field="*{nom}" />
+        <label for="prenom" >Prénom : </label>
+        <input id="prenom" type="text" th:field="*{prenom}" />
+        <label for="email" >email : </label>
+        <input id="email" type="text" th:field="*{email}" />
+        <label for="adresse" >Adresse : </label>
+        <input id="adresse" type="text" th:field="*{adresse}" />
+        <label for="telephone" >Télephone : </label>
+        <input id="telephone" type="text" th:field="*{telephone}" />
+        <label for="dateNaissance" >Date de naissance : </label>
+        <input id="dateNaissance" type="date" th:field="*{dateNaissance}" />
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>
