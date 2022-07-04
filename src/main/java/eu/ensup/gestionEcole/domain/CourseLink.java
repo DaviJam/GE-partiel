@@ -2,10 +2,7 @@ package eu.ensup.gestionEcole.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -16,6 +13,7 @@ import javax.persistence.Table;
 @Table(name="CourseLink")
 public class CourseLink {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String idStudent;
     private Long idCourse;

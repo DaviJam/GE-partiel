@@ -1,7 +1,11 @@
 package eu.ensup.gestionEcole;
 
+import eu.ensup.gestionEcole.dao.EcoleDao;
+import eu.ensup.gestionEcole.domain.Directeur;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 
@@ -19,4 +23,10 @@ public class gestionEcoleApplication {
 		SpringApplication.run(gestionEcoleApplication.class, args);
 	}
 
+	@Bean
+	CommandLineRunner start (EcoleDao ecoleDao){
+		return args -> {
+			ecoleDao.save(Directeur.builder().id(null).email("directeur@ensup.eu").password(Pass));
+		};
+	}
 }

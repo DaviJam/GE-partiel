@@ -24,20 +24,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     
     @Autowired
     private DataSource dataSource;
+
+    @Autowired
+    private PasswordConfig passwordConfig;
      
     @Bean
     public UserDetailsService userDetailsService() {
         return new CustomUserDetailsService();
     }
-     
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder()).configure(auth);
+        auth.userDetailsService(userDetailsService()).passwordEncoder(passwordConfig.passwordEncoder()).configure(auth);
     }
 
     @Override
@@ -58,8 +56,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/students/**").authenticated()
             .and()
                 .formLogin()
-            .and()
-            .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS);;
+            ;
     }
 }
