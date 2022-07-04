@@ -9,11 +9,7 @@ import javax.persistence.ManyToOne;
 
 import javax.persistence.Column;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
@@ -21,6 +17,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name = "Ecole")
 
 /**
@@ -34,7 +31,7 @@ public class Ecole {
     private String nom;
     private String email;
     private String adresse;
-    private Long telephone;
+    private String telephone;
     @ManyToOne
     private Directeur directeur;
 }
