@@ -89,7 +89,7 @@ public class EtudiantServiceTests {
     @DisplayName("get by one")
     void getStudent(){
         Etudiant updatedStudent = new Etudiant(null,"UUID1","étudiant", "4", "etudiant4@gmail.com", "new orleans", "telephone4", LocalDate.now());
-        when( when(etudiantDao.findByUuid(any(String.class))).thenReturn(updatedStudent));
+        when(etudiantDao.findByUuid(any(String.class))).thenReturn(updatedStudent);
         Etudiant student = etudiantService.getStudent("UUIDMachin");
 
         verify(etudiantDao, times(1)).findByUuid(any(String.class));
