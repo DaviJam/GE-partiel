@@ -36,7 +36,7 @@ public class EtudiantAPI {
         etudiantService.deleteStudent(uuid);
 
         if(etudiantService.getStudent(uuid) == null){
-            return "L'étudiant a bien été supprimé";
+            return  "L'étudiant a bien été supprimé" ;
         }
         else{
             return "Erreur de suppression de l'étudiant";

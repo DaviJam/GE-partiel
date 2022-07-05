@@ -1,3 +1,5 @@
+
+
 package eu.ensup.gestionEcole.config;
 
 import eu.ensup.gestionEcole.filters.ExceptionHandlerFilter;
@@ -51,16 +53,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
- 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().cors().and()
-            .addFilterBefore(exceptionHandlerFilter, UsernamePasswordAuthenticationFilter.class)
-            .addFilterAfter(jwtFilter, ExceptionHandlerFilter.class)
-            .addFilterBefore(myCORSFilter,JwtFilter.class)
-            .authorizeRequests()
-            .antMatchers("/api/students/**","/api/course/**","/api/link/**").authenticated()
-            .and()
+                .addFilterBefore(exceptionHandlerFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterAfter(jwtFilter, ExceptionHandlerFilter.class)
+                .addFilterBefore(myCORSFilter,JwtFilter.class)
+                .authorizeRequests()
+                .antMatchers("/api/students/**","/api/course/**","/api/link/**").authenticated()
+                .and()
                 .httpBasic()
                 .and()
                 .exceptionHandling()

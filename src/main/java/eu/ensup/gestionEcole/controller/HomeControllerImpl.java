@@ -59,7 +59,9 @@ public class HomeControllerImpl implements HomeController {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLoginDTO.getEmail(), userLoginDTO.getPassword()));
 
         String token = jwtUtil.generateToken(userLoginDTO.getEmail());
-        TokenDto tokenDto = new TokenDto(token);
+        Date expiryDate = jwtUtil.extractClaim(token, Claims::getExpiration);
+
+        TokenDto tokenDto = new TokenDto(token, expiryDate);
 //        Cookie tokenCookie = new Cookie("token", token);
 //        tokenCookie.setPath("/products");
 //        tokenCookie.setHttpOnly(true);
