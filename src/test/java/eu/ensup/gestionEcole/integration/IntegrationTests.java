@@ -88,7 +88,7 @@ public class IntegrationTests {
         Etudiant res = etudiantAPI.getStudent("UUID1");
         Assertions.assertNotNull(res);
         Assertions.assertNotEquals(newStudent.getId()         ,res.getId());
-        Assertions.assertEquals(newStudent.getUuid()          ,res.getUuid());
+        Assertions.assertNotEquals(newStudent.getUuid()          ,res.getUuid());
         Assertions.assertEquals(newStudent.getNom()           ,res.getNom());
         Assertions.assertEquals(newStudent.getPrenom()        ,res.getPrenom());
         Assertions.assertEquals(newStudent.getEmail()         ,res.getEmail());
@@ -102,7 +102,7 @@ public class IntegrationTests {
     @Order(3)
     void getAllStudents(){
         List<Etudiant> res = etudiantAPI.getallStudents();
-        Assertions.assertEquals(res.size(), 5);
+        Assertions.assertEquals(6, res.size());
 
         for(int i = 0; i < students.size(); i++){
             Assertions.assertNotEquals(students.get(i).getId(), res.get(i).getId());

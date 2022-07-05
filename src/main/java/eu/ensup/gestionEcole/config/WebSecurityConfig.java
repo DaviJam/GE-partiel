@@ -12,7 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import eu.ensup.gestionEcole.service.CustomUserDetailsService;
- 
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -47,7 +48,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .antMatchers("/api/students/**","/api/course/**","/api/link/**").authenticated()
             .and()
-                .httpBasic()
+                .formLogin()
+                .failureHandler((request, response, exception) -> {
+                    System.out.println(request.getHeaderNames());
+
+                    response.setStatus(401);
+                })
             ;
     }
 }

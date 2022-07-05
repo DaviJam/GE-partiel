@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/link")
-@CrossOrigin(origins = {"*"})
+@CrossOrigin
 public class CourseLinkAPI {
 
     @Autowired
