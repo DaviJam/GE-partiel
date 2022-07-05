@@ -13,7 +13,7 @@
         version: deploy
         clone: yes
         update: yes
-    - name: go to cloned repository folder
-      shell: "cd /microservices/"
     - name: deploy stack
       shell: "docker stack deploy -c docker-compose-swarn.yml my_app"
+      args:
+        chdir: "/microservices/"
