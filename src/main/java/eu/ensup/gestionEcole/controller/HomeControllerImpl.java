@@ -3,6 +3,7 @@ package eu.ensup.gestionEcole.controller;
 
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import eu.ensup.gestionEcole.domain.Directeur;
@@ -11,6 +12,7 @@ import eu.ensup.gestionEcole.dto.TokenDto;
 import eu.ensup.gestionEcole.dto.UserLoginDTO;
 import eu.ensup.gestionEcole.service.CustomUserDetailsService;
 import eu.ensup.gestionEcole.utils.JwtUtil;
+import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.security.authentication.AuthenticationManager;
