@@ -8,7 +8,7 @@
         update_cache: yes
     - name: Clone a github repository
       git:
-        repo: https://github.com/Thomas-Lacomblez/microservices-ensitech
+        repo: https://github.com/DaviJam/GE-partiel
         dest: /microservices/
         version: deploy
         clone: yes
