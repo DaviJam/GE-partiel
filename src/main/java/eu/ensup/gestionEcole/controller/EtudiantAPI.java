@@ -31,9 +31,7 @@ public class EtudiantAPI {
 
     @GetMapping("/delete/{uuid}")
     public String deleteStudent(@PathVariable String uuid) {
-        Etudiant student = etudiantService.getStudent(uuid);
-
-        etudiantService.deleteStudent(student);
+        etudiantService.deleteStudent(uuid);
 
         if(etudiantService.getStudent(uuid) == null){
             return "L'étudiant a bien été supprimé";

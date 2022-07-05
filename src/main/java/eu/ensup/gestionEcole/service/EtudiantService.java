@@ -52,5 +52,5 @@ public class EtudiantService {
         return etudiantRepository.save(student);
     }
 
-    public void deleteStudent(Etudiant etudiant){ etudiantRepository.delete(etudiant);}
+    public void deleteStudent(String uuid){ etudiantRepository.deleteEtudiantByUuid(uuid);}
 }

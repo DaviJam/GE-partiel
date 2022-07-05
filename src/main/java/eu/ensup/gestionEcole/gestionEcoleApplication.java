@@ -38,6 +38,8 @@ public class gestionEcoleApplication {
 		return args -> {
 			Directeur directeur = Directeur.builder().id(null).email("directeur@ensup.eu").password(passwordConfig.passwordEncoder().encode("directeur")).build();
 			directeurDao.save(directeur);
+			Directeur responsable = Directeur.builder().id(null).email("responsable@ensup.eu").password(passwordConfig.passwordEncoder().encode("repsonsable")).build();
+			directeurDao.save(responsable);
 			ecoleDao.save(Ecole.builder().id(null).nom("Ensup").adresse("Guyancourt").directeur(directeur).telephone("01065241253").email("contact@ensup.eu").build());
 			List<Etudiant> students = new ArrayList<>();
 			students.add( new Etudiant(null, "UUID1","Ali", "Gator","ali.gator@gmail.com", "2 rue des animaux sauvages", "0761615263", LocalDate.now()));

@@ -47,7 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .antMatchers("/api/students/**").authenticated()
             .and()
-                .formLogin()
+                .httpBasic()
             ;
     }
 }
