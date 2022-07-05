@@ -10,5 +10,9 @@ FROM adoptopenjdk/openjdk11:alpine-jre
 COPY --from=build /gestionEcole/target/*.jar /jar-files/gestionEcole.jar
 WORKDIR /jar-files
 
+ENV WAIT_VERSION 2.7.2
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/$WAIT_VERSION/wait /wait
+RUN chmod +x /wait
+
 EXPOSE 8080
 CMD [ "java", "-jar", "-Dspring.profiles.active=prod", "gestionEcole.jar" ]
