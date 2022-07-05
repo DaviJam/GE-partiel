@@ -1,12 +1,14 @@
 package eu.ensup.gestionEcole.controller;
 
+import eu.ensup.gestionEcole.config.PasswordConfig;
 import eu.ensup.gestionEcole.domain.Etudiant;
 import eu.ensup.gestionEcole.service.EtudiantService;
+import org.junit.Before;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import static org.hamcrest.Matchers.containsString;
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -15,8 +17,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -25,17 +28,25 @@ import java.util.List;
 import static org.mockito.Mockito.*;
 
 @ActiveProfiles("test")
-@RunWith(SpringRunner.class)
-@WebMvcTest(EtudiantAPI.class)
+@WebMvcTest(controllers = EtudiantAPI.class)
+@ContextConfiguration(classes = {PasswordConfig.class})
 public class EtudiantAPITests {
-//    @Autowired
-//    private DataSource dataSource;
-
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
     private EtudiantService etudiantService;
+
+    @Autowired
+    private WebApplicationContext webApplicationContext;
+
+    @Before
+    public void setup() {
+        mockMvc = MockMvcBuilders
+                .webAppContextSetup(webApplicationContext)
+                .apply(springSecurity())
+                .build();
+    }
 
     @Test
     @DisplayName("Should return all students")
@@ -47,7 +58,11 @@ public class EtudiantAPITests {
         students.add( new Etudiant(null, "UUID4","tutu", "jamiu","etudiant4@gmail.com", "adresse4", "telephone4", LocalDate.now()));
         when(etudiantService.getallStudent()).thenReturn(students);
 
-        this.mockMvc.perform(get("/getall")).andDo(print()).andExpect(status().isOk())
+        this.mockMvc.perform(
+                    get("/api/students/getall")
+                        )
+                .andDo(print())
+                .andExpect(status().isOk())
                 .andExpect(content().string(containsString("UUID1")));
 
     }

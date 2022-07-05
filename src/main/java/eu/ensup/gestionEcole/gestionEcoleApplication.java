@@ -47,7 +47,4 @@ public class gestionEcoleApplication {
 			students.forEach(etudiant -> etudiantDao.save(etudiant));
 		};
 	}
-
-	@Bean
-	PasswordConfig passwordConfig(){return new PasswordConfig();}
 }
