@@ -8,9 +8,11 @@ import eu.ensup.gestionEcole.domain.Etudiant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class CourseLinkService {
 
     @Autowired
@@ -19,6 +21,14 @@ public class CourseLinkService {
     public CourseLink associate(String etudiantUuId, Long courseId){
         CourseLink courseLink = new CourseLink(null, etudiantUuId, courseId);
         return courseLinkDao.save(courseLink);
+    }
+
+    public List<CourseLink> getCourseofStudent(String uuid){
+        return courseLinkDao.findByIdStudent(uuid);
+    }
+
+    public List<CourseLink> getAllLink(){
+        return courseLinkDao.findAll();
     }
 
 }

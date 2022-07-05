@@ -2,6 +2,7 @@ package eu.ensup.gestionEcole.controller;
 import eu.ensup.gestionEcole.domain.Etudiant;
 import eu.ensup.gestionEcole.service.EtudiantService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/students")
+@CrossOrigin(origins = {"*"})
 public class EtudiantAPI {
 
     @Autowired
@@ -29,7 +31,7 @@ public class EtudiantAPI {
         return etudiantService.getStudent(uuid);
     }
 
-    @GetMapping("/delete/{uuid}")
+    @DeleteMapping("/delete/{uuid}")
     public String deleteStudent(@PathVariable String uuid) {
         etudiantService.deleteStudent(uuid);
 
@@ -42,7 +44,7 @@ public class EtudiantAPI {
     }
 
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Etudiant updateStudent(@RequestBody Etudiant etudiant) {
         return etudiantService.updateStudent(etudiant);
     }

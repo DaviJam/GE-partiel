@@ -7,7 +7,10 @@ import eu.ensup.gestionEcole.domain.Directeur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
+@Transactional
 /**
  * A class that is used to manage the services of a director.
  */

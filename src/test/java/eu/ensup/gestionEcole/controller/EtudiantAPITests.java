@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.suite.api.SuiteDisplayName;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -20,7 +21,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
@@ -116,7 +119,7 @@ public class EtudiantAPITests {
         Etudiant student = new Etudiant(null, "UUID5","nommodif", "letgo","jo.letgo@gmail.com", "2 rue des animaux gentils", "0761615263", LocalDate.now());
         when(etudiantService.updateStudent(any(Etudiant.class))).thenReturn(students.get(0));
         MvcResult res = mockMvc.perform(
-                post("/api/students/update").content(
+                put("/api/students/update").content(
                         "{\"id\":\"null\"," +
                                 "\"uuid\":\"0\"," +
                                 "\"nom\":\"totdadadao\"," +
@@ -138,7 +141,7 @@ public class EtudiantAPITests {
 
         Mockito.doNothing().when(etudiantService).deleteStudent(any(String.class));
         MvcResult res = mockMvc.perform(
-                get("/api/students/delete/0")
+                delete("/api/students/delete/UUID1")
         ).andDo(print()).andExpect(status().isOk()).andReturn();
 
         verify(etudiantService).getStudent(any(String.class));
