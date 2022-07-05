@@ -3,7 +3,6 @@ provider "aws" {
   region = "${var.aws_region}"
 }
 
-
 ##Create swarm security group
 resource "aws_security_group" "swarm_sg" {
   name        = "swarm_sg"
