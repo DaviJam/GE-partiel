@@ -1,0 +1,25 @@
+FROM maven:3.8.4-openjdk-11-slim as build
+RUN mkdir configuration
+WORKDIR /configuration
+COPY ./ ./
+RUN mvn clean package spring-boot:repackage
+RUN ls
+RUN ls ./target
+
+# final image
+FROM adoptopenjdk/openjdk11:alpine-jre
+
+COPY --from=build /configuration/target/*.jar /jar-files/configuration.jar
+WORKDIR /jar-files
+
+RUN apk --no-cache add curl
+
+RUN apk add --no-cache openssl
+ENV WAIT_VERSION 2.7.2
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/$WAIT_VERSION/wait /wait
+RUN chmod +x /wait
+
+EXPOSE 8888
+#CMD ["/opt/java/openjdk/bin/java", "--version"]
+#CMD [ "tail", "-f", "/dev/null" ]
+CMD ["java", "-server", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseContainerSupport", "-jar", "configuration.jar"]

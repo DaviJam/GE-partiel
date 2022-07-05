@@ -1,0 +1,31 @@
+version: '3.7'
+services:  
+  db:
+    image: mysql:5.7
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: my_secret_password
+      MYSQL_DATABASE: gestionEcole
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD: db_user_pass
+    ports:
+      - "6033:3306"
+    volumes:
+      - ./dbdata:/var/lib/mysql
+    networks:
+      - spring-network
+  spring-app:
+    container_name: spring-app
+    build: 
+      context: ./
+      dockerfile: ./docker/spring-app/Dockerfile
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    ports:
+      - 8081:8080
+    networks:
+      - spring-network
+networks:
+  spring-network:
+    driver: bridge
+    name: spring-network
