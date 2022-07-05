@@ -20,5 +20,5 @@ variable "aws_instance_size" {
   default = "t2.micro"
 }
 variable "aws_region" {
-  default = "eu-west-1"
+  default = "eu-central-1"
 }
