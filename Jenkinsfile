@@ -8,7 +8,7 @@ pipeline {
 
     stages {
 
-        stage('récupération du code source et récupération de la bonne branch') {
+        stage('code source') {
 	        when {
                 not {
                     equals expected: true, actual: params.destroy
@@ -27,13 +27,13 @@ pipeline {
             }
         }
 
-        stage('récupération du code source et récupération de la bonne branch') {
+        stage('npm install') {
                     steps {
                         sh'npm install'
                     }
          }
 
-        stage('récupération du code source et récupération de la bonne branch') {
+        stage('npm run test') {
                              steps {
                                  sh'npm run test:allan'
                              }
