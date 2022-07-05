@@ -17,6 +17,19 @@
 		<java.version>11</java.version>
 		<mapstruct-version>1.4.2.Final</mapstruct-version>
 	</properties>
+	<distributionManagement>
+		<repository>
+			<id>my-maven-repo</id>
+			<name>Internal Releases</name>
+			<url>http://146.59.154.110:8081/nexus/repository/maven-releases/</url>
+		</repository>
+
+		<snapshotRepository>
+			<id>my-maven-repo</id>
+			<name>Internal Releases</name>
+			<url>http://146.59.154.110:8081/nexus/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
