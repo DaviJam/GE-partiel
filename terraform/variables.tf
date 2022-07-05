@@ -3,10 +3,10 @@ variable "ssh_user" {
   default = "ubuntu"
 }
 variable "public_key_path" {
-  default = "/home/vagrant/terraform/microservices-docker_swarm-terraform_ansible/ssh/id_rsa.pub"
+  default = "your/path/to/your/public/keys/"
 }
 variable "private_key_path" {
-  default = "/home/vagrant/terraform/microservices-docker_swarm-terraform_ansible/ssh/id_rsa"
+  default = "your/path/to/your/private/keys/"
 }
 
 ##AWS Specific Vars
