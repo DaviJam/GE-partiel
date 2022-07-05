@@ -7,6 +7,7 @@ import java.util.List;
 
 import eu.ensup.gestionEcole.domain.Directeur;
 import eu.ensup.gestionEcole.domain.Etudiant;
+import eu.ensup.gestionEcole.dto.TokenDto;
 import eu.ensup.gestionEcole.dto.UserLoginDTO;
 import eu.ensup.gestionEcole.service.CustomUserDetailsService;
 import eu.ensup.gestionEcole.utils.JwtUtil;
@@ -53,17 +54,18 @@ public class HomeControllerImpl implements HomeController {
     }
 
 
-    @PostMapping(value = "/login",consumes = "Application/json", produces = "text/plain")
-    public HttpEntity<String> generateToken(@RequestBody UserLoginDTO userLoginDTO) throws Exception {
+    @PostMapping(value = "/login",consumes = "Application/json", produces = "Application/json")
+    public TokenDto generateToken(@RequestBody UserLoginDTO userLoginDTO) throws Exception {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLoginDTO.getEmail(), userLoginDTO.getPassword()));
 
         String token = jwtUtil.generateToken(userLoginDTO.getEmail());
+        TokenDto tokenDto = new TokenDto(token);
 //        Cookie tokenCookie = new Cookie("token", token);
 //        tokenCookie.setPath("/products");
 //        tokenCookie.setHttpOnly(true);
 //        tokenCookie.setMaxAge((int) (jwtUtil.extractClaim(token, Claims::getExpiration).toInstant().getEpochSecond() - System.currentTimeMillis() / 1000));
 //        res.addCookie(tokenCookie);
         //cookiesMap.put("Set-Cookie", List.of("token="+token+"; Secure; Domain=localhost:8081; HttpOnly; Max-Age=86400; Expires="+jwtUtil.extractClaim(token, Claims::getExpiration)));
-        return new HttpEntity<String>(token);
+        return tokenDto;
     }
 }
