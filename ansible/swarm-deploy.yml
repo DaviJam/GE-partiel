@@ -1,0 +1,19 @@
+  - hosts: swarm-master
+    tasks:
+    - name: Install git, python 3.8
+      apt:
+        name:
+          - git
+        state: present
+        update_cache: yes
+    - name: Clone a github repository
+      git:
+        repo: https://github.com/Thomas-Lacomblez/microservices-ensitech
+        dest: /microservices/
+        version: deploy
+        clone: yes
+        update: yes
+    - name: go to cloned repository folder
+      shell: "cd /microservices/"
+    - name: Clone a github repository
+      shell: "docker stack deploy -c docker-compose-swarn.yml my_app"
