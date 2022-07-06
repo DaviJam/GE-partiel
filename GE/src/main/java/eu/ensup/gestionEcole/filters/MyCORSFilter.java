@@ -43,7 +43,7 @@ public class MyCORSFilter extends OncePerRequestFilter {
         response.addHeader("Access-Control-Allow-Credentials","true");
 
         response.addHeader("Access-Control-Request-Headers", "Authorization");
-        if (request.getMethod().equals(HttpMethod.OPTIONS)) {
+        if (request.getMethod().equals(HttpMethod.OPTIONS.toString())) {
             System.out.println("OPTION HEADER RECEIVED");
             response.setHeader("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
             response.addHeader("Access-Control-Allow-Credentials","true");
