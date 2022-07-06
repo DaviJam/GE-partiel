@@ -63,8 +63,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/api/students/**","/api/course/**","/api/link/**", "/api/refreshtoken/**").authenticated()
                 .and()
-                .httpBasic()
-                .and()
                 .exceptionHandling()
                 .and()
                 .sessionManagement()
