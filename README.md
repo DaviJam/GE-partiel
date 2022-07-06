@@ -1,5 +1,7 @@
 # gestionEcole
 
+Selenium test
+
 
 # Sommaire
 
@@ -10,17 +12,13 @@
 
 # prérequis
 
-- jdk 11 & jre 11 ou supérieur
-- maven version 3.8.4 ou supérieur
+- Nodejs V16.13.2
+- Npm 8.1.2
+- Chrome
 
-# Lancer l'application <a href="app"></a>
+# Lancer les tests fonctionnels
 
-exécuter la commande `mvn clean install spring-boot:run` dans un terminal à la racine du projet.
+1. ouvrir un terminal à la racine du projet
+2. npm install 
+3. npm run test
 
-# Tester notre application <a href="test"></a>
-
-Accéder l'application à l'adresse : http://localhost:8080/
-
-`/etudiants` --> lister tous les étudiants de la base (redirection vers la page de login si vous n'êtes pas connecté).
-`/creationEtudiant` --> Créer un étudiant et l'enregistrer dans la base de donnée.
- `/login` --> page de login pour se connecter.

@@ -37,3 +37,4 @@ build/
 
 dbdata/**/*
 ./dbdata/**/*
+**/node_modules/**

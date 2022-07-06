@@ -1,20 +1,24 @@
 {
-  "name": "test1",
+  "name": "ge-partiel",
   "version": "1.0.0",
-  "description": "",
+  "description": "1. [Prérequis](#prérequis)\r 2. [Lancer l'application](#app)\r 4. [Tester notre application](#test)",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "test:allan": "set PUBLIC_IP=127.0.0.1 && mocha"
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaviJam/GE-partiel.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DaviJam/GE-partiel/issues"
+  },
+  "homepage": "https://github.com/DaviJam/GE-partiel#readme",
   "dependencies": {
     "chromedriver": "^103.0.0",
-    "selenium-webdriver": "^4.3.0"
-  },
-  "devDependencies": {
     "mocha": "^10.0.0",
-    "request": "^2.88.2"
+    "selenium-webdriver": "^4.3.0"
   }
 }
