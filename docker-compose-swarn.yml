@@ -9,8 +9,8 @@ services:
       MYSQL_PASSWORD: db_user_pass
     ports:
       - "6033:3306"
-    volumes:
-      - ./dbdata:/var/lib/mysql
+    #volumes:
+      #- ./dbdata:/var/lib/mysql
     networks:
       - app-network
   ge:
