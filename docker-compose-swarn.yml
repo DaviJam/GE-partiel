@@ -41,9 +41,9 @@ services:
         constraints:
           - node.role == worker
     ports:
-			- 8888:8888
+      - 8888:8888
 		environment:
-			- SPRING_PROFILES_ACTIVE=prod
+		  - SPRING_PROFILES_ACTIVE=prod
 			- TOKEN=token-value
     networks:
       - app-network
