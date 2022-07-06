@@ -3,25 +3,37 @@ package eu.ensup.gestionEcole.controller;
 import eu.ensup.gestionEcole.domain.Cours;
 import eu.ensup.gestionEcole.domain.CourseLink;
 import eu.ensup.gestionEcole.domain.Etudiant;
+import eu.ensup.gestionEcole.dto.LinkCourseDTO;
 import eu.ensup.gestionEcole.service.CourseLinkService;
 import eu.ensup.gestionEcole.service.EtudiantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.boot.actuate.endpoint.web.Link;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+
 @RestController
 @RequestMapping("/api/link")
+@CrossOrigin
 public class CourseLinkAPI {
 
     @Autowired
     CourseLinkService courseLinkService;
 
-    @GetMapping("/{uuid}&{courseid}")
-    public CourseLink linkCourse(@PathVariable String uuid,@PathVariable Long courseid) {
-        return courseLinkService.associate(uuid, courseid);
+    @PostMapping("")
+    public CourseLink linkCourse(@RequestBody LinkCourseDTO linkCourseDTO) {
+        return courseLinkService.associate(linkCourseDTO.getIdStudent(), linkCourseDTO.getIdCourse());
+    }
+
+    @GetMapping("/{uuid}")
+    public List<CourseLink> getCourseofStudent(@PathVariable String uuid) {
+        return courseLinkService.getCourseofStudent(uuid);
+    }
+
+    @GetMapping("/getall")
+    public List<CourseLink> getAllLink() {
+        return courseLinkService.getAllLink();
     }
 }

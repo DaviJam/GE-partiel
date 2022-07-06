@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.platform.suite.api.SuiteDisplayName;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -40,8 +41,15 @@ public class CourseLinkServiceTests {
     // get math course
     Cours mathCourse = Cours.builder().id(0L).theme("Math").nbHeures(15).build();
 
+    List<CourseLink> courseLinklist;
     @BeforeEach
     void setUp() {
+        courseLinklist = new ArrayList<>();
+        courseLinklist.add(CourseLink.builder().idStudent("UUID1").idCourse(0L).build());
+        courseLinklist.add(CourseLink.builder().idStudent("UUID2").idCourse(1L).build());
+        courseLinklist.add(CourseLink.builder().idStudent("UUID3").idCourse(0L).build());
+        courseLinklist.add(CourseLink.builder().idStudent("UUID4").idCourse(1L).build());
+        courseLinklist.add(CourseLink.builder().idStudent("UUID1").idCourse(1L).build());
     }
 
     @Test
@@ -60,5 +68,22 @@ public class CourseLinkServiceTests {
         // assertions
         Assertions.assertEquals(courseLinkFromDao.getIdStudent(), courseLink.getIdStudent());
         Assertions.assertEquals(courseLinkFromDao.getIdCourse(), courseLink.getIdCourse());
+    }
+
+    @Test
+    void getAllLink(){
+
+        // stub dao
+        when(courseLinkDao.findAll()).thenReturn(courseLinklist);
+
+        // add student to course
+        List<CourseLink> links = this.courseLinkService.getAllLink();
+
+        // verify
+        Mockito.verify(courseLinkDao).findAll();
+
+        // assertions
+        Assertions.assertEquals(5, links.size() );
+        links.forEach(courseLink -> Assertions.assertNotNull(courseLink));
     }
 }

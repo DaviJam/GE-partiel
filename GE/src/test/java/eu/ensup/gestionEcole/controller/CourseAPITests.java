@@ -29,7 +29,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @ActiveProfiles("test")
-@SuiteDisplayName("Unit test")
 @ContextConfiguration(classes = {PasswordConfig.class, CourseAPI.class, CourseService.class})
 @WebMvcTest(value = CourseAPI.class,  excludeAutoConfiguration = {SecurityAutoConfiguration.class})
 public class CourseAPITests {

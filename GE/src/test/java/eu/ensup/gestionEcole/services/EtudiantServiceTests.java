@@ -9,8 +9,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.platform.suite.api.SuiteDisplayName;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -102,5 +104,12 @@ public class EtudiantServiceTests {
         Assertions.assertEquals(student.getPrenom(), updatedStudent.getPrenom());
     }
 
+    @Test
+    @DisplayName("Delete student")
+    void deleteStudent(){
+        Mockito.doNothing().when(etudiantDao).deleteEtudiantByUuid(any(String.class));
+        etudiantService.deleteStudent("UUID1");
+        verify(etudiantDao).deleteEtudiantByUuid(any(String.class));
+    }
 
 }

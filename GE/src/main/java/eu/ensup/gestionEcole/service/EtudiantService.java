@@ -8,7 +8,10 @@ import eu.ensup.gestionEcole.domain.Etudiant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
+@Transactional
 public class EtudiantService {
 
     @Autowired
@@ -52,5 +55,6 @@ public class EtudiantService {
         return etudiantRepository.save(student);
     }
 
-    public void deleteStudent(String uuid){ etudiantRepository.deleteEtudiantByUuid(uuid);}
+    public void deleteStudent(String uuid){
+        etudiantRepository.deleteEtudiantByUuid(uuid);}
 }
