@@ -88,7 +88,7 @@ public class IntegrationTests {
         Etudiant res = etudiantAPI.getStudent("UUID1");
         Assertions.assertNotNull(res);
         Assertions.assertNotEquals(newStudent.getId()         ,res.getId());
-        Assertions.assertNotEquals(newStudent.getUuid()          ,res.getUuid());
+        Assertions.assertNotEquals(newStudent.getUuid()       ,res.getUuid());
         Assertions.assertEquals(newStudent.getNom()           ,res.getNom());
         Assertions.assertEquals(newStudent.getPrenom()        ,res.getPrenom());
         Assertions.assertEquals(newStudent.getEmail()         ,res.getEmail());

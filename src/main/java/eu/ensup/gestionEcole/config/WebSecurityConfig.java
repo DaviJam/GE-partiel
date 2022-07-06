@@ -61,7 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterAfter(jwtFilter, ExceptionHandlerFilter.class)
                 .addFilterBefore(myCORSFilter,JwtFilter.class)
                 .authorizeRequests()
-                .antMatchers("/api/students/**","/api/course/**","/api/link/**").authenticated()
+                .antMatchers("/api/students/**","/api/course/**","/api/link/**", "/api/refreshtoken/**").authenticated()
                 .and()
                 .httpBasic()
                 .and()

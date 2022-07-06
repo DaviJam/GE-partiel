@@ -51,11 +51,11 @@ public class gestionEcoleApplication {
 			students.forEach(etudiant -> etudiantDao.save(etudiant));
 
 			List<Cours> coursList = new ArrayList<>();
-			coursList.add(Cours.builder().id(0L).theme("Math").nbHeures(15).build());
-			coursList.add(Cours.builder().id(1L).theme("Java").nbHeures(15).build());
-			coursList.add(Cours.builder().id(2L).theme("Cloud").nbHeures(15).build());
-			coursList.add(Cours.builder().id(3L).theme("IT").nbHeures(15).build());
-			coursList.add(Cours.builder().id(4L).theme("Angular").nbHeures(15).build());
+			coursList.add(Cours.builder().id(null).theme("Math").nbHeures(15).build());
+			coursList.add(Cours.builder().id(null).theme("Java").nbHeures(15).build());
+			coursList.add(Cours.builder().id(null).theme("Cloud").nbHeures(15).build());
+			coursList.add(Cours.builder().id(null).theme("IT").nbHeures(15).build());
+			coursList.add(Cours.builder().id(null).theme("Angular").nbHeures(15).build());
 			coursList.forEach(cours -> courseDao.save(cours));
 
 			List<CourseLink> courseLinklist = new ArrayList<>();

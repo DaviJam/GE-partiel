@@ -138,6 +138,11 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<excludes>
+						<exclude>**/*CustomUserDetailsService.*</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -204,6 +209,16 @@
 						<version>${postgresql.version}</version>
 					</dependency>
 				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<includes>
+						<include>**/GestionEcoleIntegrationTests.class</include>
+						<include>**/gestionEcoleApplicationTests.class</include>
+					</includes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

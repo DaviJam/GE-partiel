@@ -2,9 +2,16 @@ package eu.ensup.gestionEcole.controller;
 
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import eu.ensup.gestionEcole.domain.Directeur;
 import eu.ensup.gestionEcole.domain.Etudiant;
@@ -55,6 +62,16 @@ public class HomeControllerImpl implements HomeController {
         return "home";
     }
 
+    @GetMapping("/api/refreshtoken/{email}")
+    public TokenDto refreshToken(@PathVariable String email){
+        String token = jwtUtil.generateToken(email);
+        Date expiryDate = jwtUtil.extractClaim(token, Claims::getExpiration);
+        DateTimeFormatter fOut = DateTimeFormatter.ofPattern( "yyyy/dd/MM HH:mm:ss" , Locale.FRENCH );
+        OffsetDateTime date = OffsetDateTime.ofInstant(expiryDate.toInstant(), ZoneId.of("Europe/Paris"));
+        String output = date.format( fOut );
+        TokenDto tokenDto = new TokenDto(token, output);
+        return tokenDto;
+    }
 
     @PostMapping(value = "/login",consumes = "Application/json", produces = "Application/json")
     public TokenDto generateToken(@RequestBody UserLoginDTO userLoginDTO) throws Exception {
@@ -62,8 +79,11 @@ public class HomeControllerImpl implements HomeController {
 
         String token = jwtUtil.generateToken(userLoginDTO.getEmail());
         Date expiryDate = jwtUtil.extractClaim(token, Claims::getExpiration);
-
-        TokenDto tokenDto = new TokenDto(token, expiryDate);
+        DateTimeFormatter fOut = DateTimeFormatter.ofPattern( "yyyy/dd/MM HH:mm:ss" , Locale.FRENCH );
+        OffsetDateTime date = OffsetDateTime.ofInstant(expiryDate.toInstant(), ZoneId.of("Europe/Paris"));
+        String output = date.format( fOut );
+        System.out.println(output);
+        TokenDto tokenDto = new TokenDto(token, output);
 //        Cookie tokenCookie = new Cookie("token", token);
 //        tokenCookie.setPath("/products");
 //        tokenCookie.setHttpOnly(true);

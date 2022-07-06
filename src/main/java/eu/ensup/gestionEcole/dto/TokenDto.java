@@ -9,5 +9,5 @@ import java.util.Date;
 @NoArgsConstructor
 public class TokenDto {
     private String token;
-    private Date expireDate;
+    private String expireDate;
 }

@@ -3,19 +3,25 @@ package eu.ensup.gestionEcole.utils;
 import eu.ensup.gestionEcole.exceptions.NonValidJWTTokenException;
 import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.type.OffsetDateTimeType;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 import java.util.function.Function;
 
 @Configuration
 @Slf4j
 public class JwtUtil {
 
-    private Long tenMins = 1000 * 60 * 10L;
+    private Long tenMins = 1000 * 60 * 1L;
     private String secret = "toto";
 
     public Boolean validateToken(String token, UserDetails userDetails) throws NonValidJWTTokenException, NonValidJWTTokenException, ExpiredJwtException, UnsupportedJwtException, MalformedJwtException, SignatureException, IllegalArgumentException{
@@ -43,11 +49,9 @@ public class JwtUtil {
                 .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + tenMins))
+                .setExpiration(new Date(System.currentTimeMillis()+tenMins))
                 .signWith(SignatureAlgorithm.HS256,secret).compact();
-
     }
-
 
     private Claims extractAllClaims(String token) throws ExpiredJwtException, UnsupportedJwtException, MalformedJwtException, SignatureException, IllegalArgumentException {
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
