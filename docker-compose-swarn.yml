@@ -43,8 +43,8 @@ services:
     ports:
       - 8888:8888
     environment:
-	- SPRING_PROFILES_ACTIVE=prod
-	- TOKEN=token-value
+			- SPRING_PROFILES_ACTIVE=prod
+			- TOKEN=token-value
     networks:
       - app-network
   gateway:
