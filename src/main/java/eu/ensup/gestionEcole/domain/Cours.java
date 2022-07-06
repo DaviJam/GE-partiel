@@ -13,6 +13,9 @@ import javax.persistence.Table;
 
 import lombok.*;
 
+/**
+ * The type Cours.
+ */
 @Getter
 @Setter
 @ToString

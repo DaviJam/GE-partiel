@@ -11,6 +11,9 @@ import javax.persistence.Column;
 
 import lombok.*;
 
+/**
+ * The type Ecole.
+ */
 @Getter
 @Setter
 @ToString

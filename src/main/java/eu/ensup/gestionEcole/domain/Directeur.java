@@ -5,6 +5,9 @@ import javax.persistence.*;
 
 import lombok.*;
 
+/**
+ * The type Directeur.
+ */
 @Getter
 @Setter
 @Entity

@@ -4,6 +4,9 @@ import lombok.*;
 
 import javax.persistence.*;
 
+/**
+ * The type Course link.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

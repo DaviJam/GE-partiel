@@ -12,6 +12,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Gestion ecole application.
+ */
 @SpringBootApplication
 
 /**
@@ -22,6 +25,7 @@ public class gestionEcoleApplication {
 
 	/**
 	 * The main() method uses Spring Boot’s SpringApplication.run() method to launch an application
+	 *
 	 * @param args list of args to passed to the app
 	 */
 	public static void main(String[] args) {
@@ -29,6 +33,17 @@ public class gestionEcoleApplication {
 	}
 
 
+	/**
+	 * Start command line runner.
+	 *
+	 * @param ecoleDao       the ecole dao
+	 * @param directeurDao   the directeur dao
+	 * @param etudiantDao    the etudiant dao
+	 * @param courseDao      the course dao
+	 * @param courseLinkDao  the course link dao
+	 * @param passwordConfig the password config
+	 * @return the command line runner
+	 */
 	@Bean
 	CommandLineRunner start (
 			EcoleDao ecoleDao,

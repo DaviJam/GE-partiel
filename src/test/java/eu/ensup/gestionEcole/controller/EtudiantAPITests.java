@@ -36,11 +36,17 @@ import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.boot.test.json.JsonContent;
 
+/**
+ * The type Etudiant api tests.
+ */
 @ActiveProfiles("test")
 @ContextConfiguration(classes = {PasswordConfig.class, EtudiantAPI.class, EtudiantService.class})
 @WebMvcTest(value = EtudiantAPI.class,  excludeAutoConfiguration = {SecurityAutoConfiguration.class})
 public class EtudiantAPITests {
 
+    /**
+     * The Mock mvc.
+     */
     @Autowired
     protected MockMvc mockMvc;
 
@@ -49,6 +55,9 @@ public class EtudiantAPITests {
 
     private List<Etudiant> students;
 
+    /**
+     * Setup.
+     */
     @BeforeEach
     void setup(){
         students = new ArrayList<>();
@@ -58,6 +67,11 @@ public class EtudiantAPITests {
         students.add( new Etudiant(null, "UUID4","tutu", "jamiu","etudiant4@gmail.com", "adresse4", "telephone4", LocalDate.now()));
     }
 
+    /**
+     * Gets all students.
+     *
+     * @throws Exception the exception
+     */
     @Test
     @DisplayName("Should return all students")
     public void getAllStudents() throws Exception {
@@ -78,6 +92,11 @@ public class EtudiantAPITests {
         Assertions.assertTrue(res.getResponse().getContentAsString().contains("tutu"));
     }
 
+    /**
+     * Gets one student.
+     *
+     * @throws Exception the exception
+     */
     @Test
     @DisplayName("Should return a student")
     public void getOneStudent() throws Exception {
@@ -93,6 +112,11 @@ public class EtudiantAPITests {
         Assertions.assertTrue(res.getResponse().getContentAsString().contains("UUID1"));
     }
 
+    /**
+     * Add student.
+     *
+     * @throws Exception the exception
+     */
     @Test
     @DisplayName("Should add a student")
     public void addStudent() throws Exception {
@@ -113,6 +137,11 @@ public class EtudiantAPITests {
         Assertions.assertTrue(res.getResponse().getContentAsString().contains("UUID1"));
     }
 
+    /**
+     * Update student.
+     *
+     * @throws Exception the exception
+     */
     @Test
     @DisplayName("Should update a student")
     public void updateStudent() throws Exception {
@@ -134,6 +163,11 @@ public class EtudiantAPITests {
         Assertions.assertTrue(res.getResponse().getContentAsString().contains("Ali"));
     }
 
+    /**
+     * Delete student.
+     *
+     * @throws Exception the exception
+     */
     @Test
     @DisplayName("Should delete a student")
     public void deleteStudent() throws Exception {

@@ -13,35 +13,68 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-
+/**
+ * The type Course link api.
+ */
 @RestController
 @RequestMapping("/api/link")
 @CrossOrigin
 public class CourseLinkAPI {
 
+    /**
+     * The Course link service.
+     */
     @Autowired
     CourseLinkService courseLinkService;
 
+    /**
+     * Link course course link.
+     *
+     * @param linkCourseDTO the link course dto
+     * @return the course link
+     */
     @PostMapping("")
     public CourseLink linkCourse(@RequestBody LinkCourseDTO linkCourseDTO) {
         return courseLinkService.associate(linkCourseDTO.getIdStudent(), linkCourseDTO.getIdCourse());
     }
 
+    /**
+     * Gets courseof student.
+     *
+     * @param uuid the uuid
+     * @return the courseof student
+     */
     @GetMapping("/{uuid}")
     public List<CourseLink> getCourseofStudent(@PathVariable String uuid) {
         return courseLinkService.getCourseofStudent(uuid);
     }
 
+    /**
+     * Gets all link.
+     *
+     * @return the all link
+     */
     @GetMapping("/getall")
     public List<CourseLink> getAllLink() {
         return courseLinkService.getAllLink();
     }
 
+    /**
+     * Delete link by uuid.
+     *
+     * @param uuid the uuid
+     */
     @DeleteMapping("/delete/{uuid}")
     public void deleteLinkByUuid(@PathVariable String uuid){
         courseLinkService.deleteCourseLink(uuid);
     }
 
+    /**
+     * Get by course list.
+     *
+     * @param id the id
+     * @return the list
+     */
     @GetMapping("/getByCourse/{id}")
     public List<CourseLink> getByCourse(@PathVariable Long id){
         return courseLinkService.getBySource(id);

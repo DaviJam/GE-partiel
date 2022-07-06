@@ -10,18 +10,24 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
+/**
+ * The type Etudiant service.
+ */
 @Service
 @Transactional
 public class EtudiantService {
 
+    /**
+     * The Etudiant repository.
+     */
     @Autowired
     EtudiantDao etudiantRepository;
 
     /**
      * It creates a new student in the database
-     * 
+     *
      * @param etudiant the object to be created
-     * @return Etudiant
+     * @return Etudiant etudiant
      */
     public Etudiant createStudent(Etudiant etudiant) {
         etudiant.setUuid(String.valueOf(UUID.randomUUID()));
@@ -30,7 +36,7 @@ public class EtudiantService {
 
     /**
      * It returns a list of all the students in the database
-     * 
+     *
      * @return A list of all the students in the database.
      */
     public List<Etudiant> getallStudent() {
@@ -40,10 +46,17 @@ public class EtudiantService {
     /**
      * It returns a student in the database
      *
+     * @param uuid the uuid
      * @return A student in the database.
      */
     public Etudiant getStudent(String uuid){ return etudiantRepository.findByUuid(uuid); }
 
+    /**
+     * Update student etudiant.
+     *
+     * @param etudiant the etudiant
+     * @return the etudiant
+     */
     public Etudiant updateStudent(Etudiant etudiant){
         Etudiant student = etudiantRepository.findByUuid(etudiant.getUuid());
         student.setNom(etudiant.getNom());
@@ -55,6 +68,11 @@ public class EtudiantService {
         return etudiantRepository.save(student);
     }
 
+    /**
+     * Delete student.
+     *
+     * @param uuid the uuid
+     */
     public void deleteStudent(String uuid){
         etudiantRepository.deleteEtudiantByUuid(uuid);}
 }

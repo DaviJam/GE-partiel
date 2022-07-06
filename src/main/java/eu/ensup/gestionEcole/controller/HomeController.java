@@ -23,14 +23,23 @@ import eu.ensup.gestionEcole.service.EtudiantService;
 import lombok.extern.slf4j.Slf4j;
 
 
+/**
+ * The type Home controller.
+ */
 @RestController
 @Slf4j
 @CrossOrigin
 public class HomeController {
 
+    /**
+     * The Directeur service.
+     */
     @Autowired
     DirecteurService directeurService;
-    
+
+    /**
+     * The Etudiant service.
+     */
     @Autowired
     EtudiantService etudiantService;
     @Autowired
@@ -41,6 +50,12 @@ public class HomeController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    /**
+     * Refresh token token dto.
+     *
+     * @param email the email
+     * @return the token dto
+     */
     @GetMapping("/api/refreshtoken/{email}")
     public TokenDto refreshToken(@PathVariable String email){
         String token = jwtUtil.generateToken(email);
@@ -52,6 +67,13 @@ public class HomeController {
         return tokenDto;
     }
 
+    /**
+     * Generate token token dto.
+     *
+     * @param userLoginDTO the user login dto
+     * @return the token dto
+     * @throws Exception the exception
+     */
     @PostMapping(value = "/login",consumes = "Application/json", produces = "Application/json")
     public TokenDto generateToken(@RequestBody UserLoginDTO userLoginDTO) throws Exception {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLoginDTO.getEmail(), userLoginDTO.getPassword()));

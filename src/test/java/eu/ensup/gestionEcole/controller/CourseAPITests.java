@@ -28,10 +28,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
+/**
+ * The type Course api tests.
+ */
 @ActiveProfiles("test")
 @ContextConfiguration(classes = {PasswordConfig.class, CourseAPI.class, CourseService.class})
 @WebMvcTest(value = CourseAPI.class,  excludeAutoConfiguration = {SecurityAutoConfiguration.class})
 public class CourseAPITests {
+    /**
+     * The Mock mvc.
+     */
     @Autowired
     protected MockMvc mockMvc;
 
@@ -40,6 +46,9 @@ public class CourseAPITests {
 
     private List<Cours> courseList;
 
+    /**
+     * Setup.
+     */
     @BeforeEach
     void setup(){
         courseList = new ArrayList<>();
@@ -48,6 +57,11 @@ public class CourseAPITests {
         courseList.add(new Cours(null, "Histoire", 43));
     }
 
+    /**
+     * Gets all course.
+     *
+     * @throws Exception the exception
+     */
     @Test
     @DisplayName("Should return all courses")
     public void getAllCourse() throws Exception {

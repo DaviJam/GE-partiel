@@ -21,16 +21,28 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+/**
+ * The type Course dao tests.
+ */
 @ActiveProfiles("test")
 @ExtendWith(MockitoExtension.class)
 public class CourseDaoTests {
 
+    /**
+     * The Course service.
+     */
     @InjectMocks
     CourseService courseService;
 
+    /**
+     * The Course dao.
+     */
     @Mock
     CourseDao courseDao;
 
+    /**
+     * Get all course.
+     */
     @Test
     @DisplayName("Get all courses")
     void getAllCourse(){
