@@ -9,5 +9,7 @@ import java.util.List;
 public interface CourseLinkDao extends JpaRepository<CourseLink, Long> {
     List<CourseLink> findByIdStudent(String uuid);
 
+    List<CourseLink> findByIdCourse(Long id);
+
     void deleteAllByIdStudent(String uuid);
 }

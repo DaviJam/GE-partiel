@@ -33,4 +33,7 @@ public class CourseLinkService {
 
     public void deleteCourseLink(String uuid){ courseLinkDao.deleteAllByIdStudent(uuid);}
 
+    public List<CourseLink> getBySource(Long id) {
+        return this.courseLinkDao.findByIdCourse(id);
+    }
 }

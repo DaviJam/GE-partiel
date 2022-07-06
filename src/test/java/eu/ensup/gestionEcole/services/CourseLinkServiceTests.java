@@ -89,6 +89,22 @@ public class CourseLinkServiceTests {
     }
 
     @Test
+    void getBySource(){
+        // stub dao
+        when(courseLinkDao.findByIdCourse(any(Long.class))).thenReturn(courseLinklist);
+
+        // add student to course
+        List<CourseLink> links = this.courseLinkService.getBySource(0L);
+
+        // verify
+        Mockito.verify(courseLinkDao).findByIdCourse(any(Long.class));
+
+        // assertions
+        Assertions.assertEquals(5, links.size() );
+        links.forEach(courseLink -> Assertions.assertNotNull(courseLink));
+    }
+
+    @Test
     void deleteLinkofaStudent(){
         // stub dao
         Mockito.doNothing().when(courseLinkDao).deleteAllByIdStudent(any(String.class));
