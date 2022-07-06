@@ -11,14 +11,11 @@ import org.springframework.context.annotation.Bean;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-
 
 /**
  * The type Gestion ecole application.
  */
 @SpringBootApplication
-@EnableDiscoveryClient
 
 /**
  * This class is the entry point of the application.
@@ -77,10 +74,10 @@ public class gestionEcoleApplication {
 			coursList.forEach(cours -> courseDao.save(cours));
 
 			List<CourseLink> courseLinklist = new ArrayList<>();
-			courseLinklist.add(CourseLink.builder().idStudent("UUID1").idCourse(0L).build());
-			courseLinklist.add(CourseLink.builder().idStudent("UUID2").idCourse(1L).build());
-			courseLinklist.add(CourseLink.builder().idStudent("UUID3").idCourse(0L).build());
-			courseLinklist.add(CourseLink.builder().idStudent("UUID4").idCourse(1L).build());
+			courseLinklist.add(CourseLink.builder().idStudent("UUID1").idCourse(1L).build());
+			courseLinklist.add(CourseLink.builder().idStudent("UUID2").idCourse(2L).build());
+			courseLinklist.add(CourseLink.builder().idStudent("UUID3").idCourse(1L).build());
+			courseLinklist.add(CourseLink.builder().idStudent("UUID4").idCourse(2L).build());
 			courseLinklist.add(CourseLink.builder().idStudent("UUID1").idCourse(1L).build());
 			courseLinklist.forEach(courseLink -> courseLinkDao.save(courseLink));
 		};

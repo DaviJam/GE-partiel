@@ -17,4 +17,19 @@ public interface CourseLinkDao extends JpaRepository<CourseLink, Long> {
      * @return the list
      */
     List<CourseLink> findByIdStudent(String uuid);
+
+    /**
+     * Find by id course list.
+     *
+     * @param id the id
+     * @return the list
+     */
+    List<CourseLink> findByIdCourse(Long id);
+
+    /**
+     * Delete all by id student.
+     *
+     * @param uuid the uuid
+     */
+    void deleteAllByIdStudent(String uuid);
 }

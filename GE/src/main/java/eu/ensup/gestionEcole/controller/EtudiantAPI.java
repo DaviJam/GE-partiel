@@ -57,15 +57,15 @@ public class EtudiantAPI {
      * @param uuid the uuid
      * @return the string
      */
-    @DeleteMapping("/delete/{uuid}")
+    @DeleteMapping(value = "/delete/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String deleteStudent(@PathVariable String uuid) {
         etudiantService.deleteStudent(uuid);
 
         if(etudiantService.getStudent(uuid) == null){
-            return  "L'étudiant a bien été supprimé" ;
+            return  "{\"result\" : \"L'étudiant a bien été supprimé\"}";
         }
         else{
-            return "Erreur de suppression de l'étudiant";
+            return "{\"result\":\"Erreur de suppression de l'étudiant\"}";
         }
     }
 

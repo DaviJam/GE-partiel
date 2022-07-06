@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
@@ -107,5 +108,35 @@ public class CourseLinkServiceTests {
         // assertions
         Assertions.assertEquals(5, links.size() );
         links.forEach(courseLink -> Assertions.assertNotNull(courseLink));
+    }
+
+    /**
+     * Get by source.
+     */
+    @Test
+    void getBySource(){
+        // stub dao
+        when(courseLinkDao.findByIdCourse(any(Long.class))).thenReturn(courseLinklist);
+
+        // add student to course
+        List<CourseLink> links = this.courseLinkService.getBySource(0L);
+
+        // verify
+        Mockito.verify(courseLinkDao).findByIdCourse(any(Long.class));
+
+        // assertions
+        Assertions.assertEquals(5, links.size() );
+        links.forEach(courseLink -> Assertions.assertNotNull(courseLink));
+    }
+
+    /**
+     * Delete linkofa student.
+     */
+    @Test
+    void deleteLinkofaStudent(){
+        // stub dao
+        Mockito.doNothing().when(courseLinkDao).deleteAllByIdStudent(any(String.class));
+        courseLinkService.deleteCourseLink("UUID1");
+        verify(courseLinkDao).deleteAllByIdStudent(any(String.class));
     }
 }

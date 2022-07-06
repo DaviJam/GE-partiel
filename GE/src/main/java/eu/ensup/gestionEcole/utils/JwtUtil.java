@@ -24,7 +24,7 @@ import java.util.function.Function;
 @Slf4j
 public class JwtUtil {
 
-    private Long tenMins = 1000 * 60 * 1L;
+    private Long tenMins = 1000 * 60 * 15L;
     private String secret = "toto";
 
     /**

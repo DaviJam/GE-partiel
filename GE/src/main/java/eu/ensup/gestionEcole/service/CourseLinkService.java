@@ -55,4 +55,20 @@ public class CourseLinkService {
         return courseLinkDao.findAll();
     }
 
+    /**
+     * Delete course link.
+     *
+     * @param uuid the uuid
+     */
+    public void deleteCourseLink(String uuid){ courseLinkDao.deleteAllByIdStudent(uuid);}
+
+    /**
+     * Gets by source.
+     *
+     * @param id the id
+     * @return the by source
+     */
+    public List<CourseLink> getBySource(Long id) {
+        return this.courseLinkDao.findByIdCourse(id);
+    }
 }
