@@ -4,6 +4,9 @@ import lombok.*;
 
 import java.util.Date;
 
+/**
+ * The type Token dto.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

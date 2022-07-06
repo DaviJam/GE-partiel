@@ -26,6 +26,9 @@ import java.util.List;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
+/**
+ * The type Course link service tests.
+ */
 @ActiveProfiles("test")
 @ExtendWith(MockitoExtension.class)
 public class CourseLinkServiceTests {
@@ -35,13 +38,26 @@ public class CourseLinkServiceTests {
     @Mock
     private CourseLinkDao courseLinkDao;
 
-    // new student
+    /**
+     * The Student.
+     */
+// new student
     Etudiant student = new Etudiant(null,"UUID1","toto", "tito", "toto@email.com", "12 av titotu 78250 Yvi source", "0615485646",LocalDate.of(2000,05,25));
 
-    // get math course
+    /**
+     * The Math course.
+     */
+// get math course
     Cours mathCourse = Cours.builder().id(0L).theme("Math").nbHeures(15).build();
 
+    /**
+     * The Course linklist.
+     */
     List<CourseLink> courseLinklist;
+
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
         courseLinklist = new ArrayList<>();
@@ -52,6 +68,9 @@ public class CourseLinkServiceTests {
         courseLinklist.add(CourseLink.builder().idStudent("UUID1").idCourse(1L).build());
     }
 
+    /**
+     * Link student.
+     */
     @Test
     void linkStudent(){
 
@@ -70,6 +89,9 @@ public class CourseLinkServiceTests {
         Assertions.assertEquals(courseLinkFromDao.getIdCourse(), courseLink.getIdCourse());
     }
 
+    /**
+     * Get all link.
+     */
     @Test
     void getAllLink(){
 

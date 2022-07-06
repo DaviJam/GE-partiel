@@ -7,6 +7,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+/**
+ * The type Enseignant.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

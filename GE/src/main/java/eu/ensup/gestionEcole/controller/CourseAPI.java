@@ -12,14 +12,24 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 
-
+/**
+ * The type Course api.
+ */
 @RestController
 @RequestMapping("/api/course")
 @CrossOrigin
 public class CourseAPI {
+    /**
+     * The Course service.
+     */
     @Autowired
     CourseService courseService;
 
+    /**
+     * Getall course list.
+     *
+     * @return the list
+     */
     @GetMapping("")
     public List<Cours> getallCourse(){ return courseService.getallCourse();}
 }

@@ -5,12 +5,20 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
- 
+
+/**
+ * The type Custom user details.
+ */
 public class CustomUserDetails implements UserDetails {
  
     private Directeur directeur;
 
-     
+
+    /**
+     * Instantiates a new Custom user details.
+     *
+     * @param directeur the directeur
+     */
     public CustomUserDetails(Directeur directeur) {
         this.directeur = directeur;
     }
@@ -61,7 +69,12 @@ public class CustomUserDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-     
+
+    /**
+     * Gets full name.
+     *
+     * @return the full name
+     */
     public String getFullName() {
         if (directeur != null) {
             return directeur.getEmail();

@@ -10,6 +10,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 
+/**
+ * The type Etudiant.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

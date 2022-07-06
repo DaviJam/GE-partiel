@@ -19,21 +19,36 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+/**
+ * The type Directeur service tests.
+ */
 @ActiveProfiles("test")
 @ExtendWith(MockitoExtension.class)
 public class DirecteurServiceTests {
 
+    /**
+     * The Directeur service.
+     */
     @InjectMocks
     DirecteurService directeurService;
 
+    /**
+     * The Directeur dao.
+     */
     @Mock
     DirecteurDao directeurDao;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
 
     }
 
+    /**
+     * Create directeur test.
+     */
     @Test
     public void createDirecteurTest() {
 
@@ -44,6 +59,9 @@ public class DirecteurServiceTests {
 
     }
 
+    /**
+     * Gets all directeur test.
+     */
     @Test
     void getAllDirecteurTest() {
 
@@ -60,6 +78,9 @@ public class DirecteurServiceTests {
         verify(directeurDao, times(1)).findAll();
     }
 
+    /**
+     * Gets directeur by email test.
+     */
     @Test
     void getDirecteurByEmailTest() {
         when(directeurDao.findByEmail("directeur1@gmail.com")).thenReturn(new Directeur(null, "directeur1@gmail.com", "password1"));

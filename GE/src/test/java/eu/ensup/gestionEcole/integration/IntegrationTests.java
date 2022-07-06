@@ -17,23 +17,38 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Integration tests.
+ */
 @ActiveProfiles("test")
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class IntegrationTests {
 
+    /**
+     * The Etudiant api.
+     */
     @Autowired
     protected EtudiantAPI etudiantAPI;
 
+    /**
+     * The Course api.
+     */
     @Autowired
     protected CourseAPI courseAPI;
 
+    /**
+     * The Course link api.
+     */
     @Autowired
     protected CourseLinkAPI courseLinkAPI;
 
     private List<Etudiant> students;
     private List<Cours> courses;
 
+    /**
+     * Setup.
+     */
     @BeforeEach
     void setup(){
         students = new ArrayList<>();
@@ -51,6 +66,9 @@ public class IntegrationTests {
     }
 
 
+    /**
+     * Add student.
+     */
     @SneakyThrows
     @Test
     @DisplayName("add a student")
@@ -79,6 +97,9 @@ public class IntegrationTests {
 
     }
 
+    /**
+     * Get student.
+     */
     @SneakyThrows
     @Test
     @DisplayName("Get one student")
@@ -96,6 +117,9 @@ public class IntegrationTests {
         Assertions.assertEquals(newStudent.getTelephone()     ,res.getTelephone());
     }
 
+    /**
+     * Get all students.
+     */
     @SneakyThrows
     @Test
     @DisplayName("Get all students")
@@ -115,6 +139,9 @@ public class IntegrationTests {
         }
     }
 
+    /**
+     * Update student.
+     */
     @SneakyThrows
     @Test
     @DisplayName("update a student")
@@ -142,6 +169,9 @@ public class IntegrationTests {
         Assertions.assertEquals(students.size(), 4);
     }
 
+    /**
+     * Delete student.
+     */
     @SneakyThrows
     @Test
     @DisplayName("Delete a student")
@@ -155,6 +185,9 @@ public class IntegrationTests {
         Assertions.assertNull(nullStudent);
     }
 
+    /**
+     * Get all course.
+     */
     @Test
     @DisplayName("Get all courses")
     @Order(6)
@@ -180,6 +213,9 @@ public class IntegrationTests {
         Assertions.assertNotNull(allCourses.stream().filter(cours -> cours.getNbHeures() == courses.get(3).getNbHeures()));
     }
 
+    /**
+     * Link course to student.
+     */
     @SneakyThrows
     @Test
     @DisplayName("Link a course to a student")

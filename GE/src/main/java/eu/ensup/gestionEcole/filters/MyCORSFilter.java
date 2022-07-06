@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * The type My cors filter.
+ */
 @Component
 //@Order(Ordered.HIGHEST_PRECEDENCE)
 public class MyCORSFilter extends OncePerRequestFilter {

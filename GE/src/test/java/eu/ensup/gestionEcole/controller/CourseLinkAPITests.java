@@ -32,18 +32,31 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * The type Course link api tests.
+ */
 @ActiveProfiles("test")
 @ContextConfiguration(classes = {PasswordConfig.class, CourseLinkAPI.class, CourseLinkService.class})
 @WebMvcTest(value = CourseLinkAPI.class,  excludeAutoConfiguration = {SecurityAutoConfiguration.class})
 public class CourseLinkAPITests {
 
+    /**
+     * The Mock mvc.
+     */
     @Autowired
     protected MockMvc mockMvc;
 
     @MockBean
     private CourseLinkService courseLinkService;
 
+    /**
+     * The Course linklist.
+     */
     List<CourseLink> courseLinklist;
+
+    /**
+     * Setup.
+     */
     @BeforeEach
     void setup(){
         courseLinklist = new ArrayList<>();
@@ -54,6 +67,11 @@ public class CourseLinkAPITests {
         courseLinklist.add(CourseLink.builder().idStudent("UUID4").idCourse(1L).build());
     }
 
+    /**
+     * Associate.
+     *
+     * @throws Exception the exception
+     */
     @Test
     @DisplayName("Link course and student")
     public void associate() throws Exception{
@@ -74,6 +92,11 @@ public class CourseLinkAPITests {
         Assertions.assertTrue(res.getResponse().getContentAsString().contains("0"));
     }
 
+    /**
+     * Gets courseof student.
+     *
+     * @throws Exception the exception
+     */
     @Test
     @DisplayName("getCourseofStudent")
     public void getCourseofStudent() throws Exception{
@@ -91,6 +114,11 @@ public class CourseLinkAPITests {
         Assertions.assertTrue(res.getResponse().getContentAsString().contains("UUID1"));
     }
 
+    /**
+     * Gets all course link.
+     *
+     * @throws Exception the exception
+     */
     @Test
     @DisplayName("getAllCourseLink")
     public void getAllCourseLink() throws Exception{

@@ -20,6 +20,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import eu.ensup.gestionEcole.service.CustomUserDetailsService;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+/**
+ * The type Web security config.
+ */
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {

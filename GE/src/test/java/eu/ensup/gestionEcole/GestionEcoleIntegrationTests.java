@@ -6,6 +6,9 @@ import org.junit.platform.suite.api.Suite;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+/**
+ * The type Gestion ecole integration tests.
+ */
 @SpringBootTest
 @ActiveProfiles("test")
 @Suite

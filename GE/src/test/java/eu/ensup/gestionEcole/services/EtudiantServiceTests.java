@@ -25,24 +25,42 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+/**
+ * The type Etudiant service tests.
+ */
 @ActiveProfiles("test")
 @ExtendWith(MockitoExtension.class)
 public class EtudiantServiceTests {
 
+    /**
+     * The Etudiant service.
+     */
     @InjectMocks
     EtudiantService etudiantService;
 
+    /**
+     * The Etudiant dao.
+     */
     @Mock
     EtudiantDao etudiantDao;
 
+    /**
+     * The Students.
+     */
     List<Etudiant> students;
 
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
     }
 
 
+    /**
+     * Create etudiant test.
+     */
     @Test
     public void createEtudiantTest() {
         Etudiant etudiant = new Etudiant(null,"UUID1","étudiant", "4", "etudiant4@gmail.com", "adresse4", "telephone4", LocalDate.now());
@@ -53,6 +71,9 @@ public class EtudiantServiceTests {
 
     }
 
+    /**
+     * Gets all etudiant tests.
+     */
     @Test
     void getAllEtudiantTests() {
         students = new ArrayList<>();
@@ -69,6 +90,9 @@ public class EtudiantServiceTests {
         verify(etudiantDao, times(1)).findAll();
     }
 
+    /**
+     * Update student.
+     */
     @Test
     @DisplayName("Update student")
     void updateStudent(){
@@ -87,6 +111,9 @@ public class EtudiantServiceTests {
         Assertions.assertEquals(upStudent.getPrenom(), updatedStudent.getPrenom());
     }
 
+    /**
+     * Get student.
+     */
     @Test
     @DisplayName("get by one")
     void getStudent(){
@@ -104,6 +131,9 @@ public class EtudiantServiceTests {
         Assertions.assertEquals(student.getPrenom(), updatedStudent.getPrenom());
     }
 
+    /**
+     * Delete student.
+     */
     @Test
     @DisplayName("Delete student")
     void deleteStudent(){
