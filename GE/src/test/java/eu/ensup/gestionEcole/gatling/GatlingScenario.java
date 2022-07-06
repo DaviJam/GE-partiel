@@ -134,7 +134,7 @@ public class GatlingScenario extends Simulation {
     {
         setUp(
                 //permet de tester 50 utilisateur sur 2 min
-                directeur.injectOpen(rampUsers(50).during(120))
+                directeur.injectOpen(rampUsers(100).during(120))
                 //permet de tester 50 utilisateur en meme temps
 //                 directeur2.injectOpen(atOnceUsers(50))
         ).protocols(httpProtocol);
