@@ -89,7 +89,7 @@ services:
     networks:
       - app-network
   angular-app:
-    image: thomaslpro/compte-app
+    image: thomaslpro/ge-app
     ports:
       - 80:80
     command: sh -c "/wait && nginx -g 'daemon off;'"
