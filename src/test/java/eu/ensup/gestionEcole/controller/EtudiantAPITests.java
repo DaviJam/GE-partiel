@@ -27,6 +27,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -180,7 +181,7 @@ public class EtudiantAPITests {
 
         verify(etudiantService).getStudent(any(String.class));
         verify(etudiantService).deleteStudent(any(String.class));
-        Assertions.assertTrue(res.getResponse().getContentAsString().contains("L'étudiant a bien été supprimé"));
+        Assertions.assertTrue(res.getResponse().getContentAsString(StandardCharsets.UTF_8).contains("L'étudiant a bien été supprimé"));
     }
 
 }
