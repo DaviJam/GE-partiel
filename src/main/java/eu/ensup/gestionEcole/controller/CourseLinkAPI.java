@@ -36,4 +36,9 @@ public class CourseLinkAPI {
     public List<CourseLink> getAllLink() {
         return courseLinkService.getAllLink();
     }
+
+    @DeleteMapping("/delete/{uuid}")
+    public void deleteLinkByUuid(@PathVariable String uuid){
+        courseLinkService.deleteCourseLink(uuid);
+    }
 }

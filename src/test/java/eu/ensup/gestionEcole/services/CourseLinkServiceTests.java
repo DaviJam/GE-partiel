@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ActiveProfiles("test")
@@ -85,5 +86,13 @@ public class CourseLinkServiceTests {
         // assertions
         Assertions.assertEquals(5, links.size() );
         links.forEach(courseLink -> Assertions.assertNotNull(courseLink));
+    }
+
+    @Test
+    void deleteLinkofaStudent(){
+        // stub dao
+        Mockito.doNothing().when(courseLinkDao).deleteAllByIdStudent(any(String.class));
+        courseLinkService.deleteCourseLink("UUID1");
+        verify(courseLinkDao).deleteAllByIdStudent(any(String.class));
     }
 }

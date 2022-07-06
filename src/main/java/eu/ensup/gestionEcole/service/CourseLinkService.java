@@ -31,4 +31,6 @@ public class CourseLinkService {
         return courseLinkDao.findAll();
     }
 
+    public void deleteCourseLink(String uuid){ courseLinkDao.deleteAllByIdStudent(uuid);}
+
 }
