@@ -86,17 +86,4 @@ public class ExceptionHandlerAdvice {
         ResponseEntity<String> entity = new ResponseEntity<>(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         return entity;
     }
-
-    /**
-     * Handle product not f ound exceptions response entity.
-     *
-     * @param exception the exception
-     * @return the response entity
-     */
-    @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<String> HandleProductNotFOundExceptions(ProductNotFoundException exception){
-        ResponseEntity<String> entity = new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
-        return entity;
-    }
-
 }
