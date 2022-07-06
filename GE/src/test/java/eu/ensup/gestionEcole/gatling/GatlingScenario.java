@@ -53,7 +53,7 @@ public class GatlingScenario extends Simulation {
             rbody = objectMapper.writeValueAsString(values);
             HttpClient httpClient = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("http://"+public_ip+":8080/login"))
+                    .uri(URI.create("http://"+public_ip+":9999/ge-service/login"))
                     .POST(HttpRequest.BodyPublishers.ofString(rbody))
                     .setHeader("Content-type","application/json")
                     .build();
@@ -114,7 +114,7 @@ public class GatlingScenario extends Simulation {
      * The Http protocol.
      */
     HttpProtocolBuilder httpProtocol = http
-            .baseUrl("http://"+System.getProperty("public_ip")+":8080")
+            .baseUrl("http://"+public_ip+":9999/ge-service")
             .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
             .acceptEncodingHeader("gzip, deflate")
             .acceptLanguageHeader("it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3")
