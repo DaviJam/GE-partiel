@@ -16,8 +16,8 @@
     - name: replace line in conf
       lineinfile:
         path : /microservices/docker-compose-swarn.yml
-        regexp: '^(.*)TOKEN=(.*)$
-        line:  'TOKEN={{ github_token }}'
+        regexp: '(.*)TOKEN=(.*)$'
+        line:  "      - TOKEN={{ github_token }}"
         backrefs: yes
     - name: deploy stack
       shell: "docker stack deploy -c docker-compose-swarn.yml my_app"
