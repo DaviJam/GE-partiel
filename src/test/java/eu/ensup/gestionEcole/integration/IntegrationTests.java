@@ -162,7 +162,7 @@ public class IntegrationTests {
         // get all courses
         List<Cours> allCourses = courseAPI.getallCourse();
         // check
-        Assertions.assertEquals(allCourses.size(), 4);
+        Assertions.assertEquals(allCourses.size(), 5);
 
         Assertions.assertNotNull(allCourses.stream().filter(cours -> cours.getId() == courses.get(0).getId()));
         Assertions.assertNotNull(allCourses.stream().filter(cours -> cours.getId() == courses.get(1).getId()));
