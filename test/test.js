@@ -17,7 +17,7 @@ describe('ge_partiel', function() {
     await driver.quit();
   })
   it('ge_partiel', async function() {
-    await driver.get("http://127.0.0.1:4200/")
+    await driver.get("http://13.41.191.244/")
     await driver.manage().window().setRect({ width: 1552, height: 832 })
     await new Promise(r => setTimeout(r, 5000));
 
